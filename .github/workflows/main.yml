@@ -34,8 +34,3 @@ jobs:
         with:
           name: screenshots
           path: screenshots/
-
-      - name: Add screenshot link to summary
-        run: |
-          echo "## Test Screenshot" >> $GITHUB_STEP_SUMMARY
-          echo "- [uts.png](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
