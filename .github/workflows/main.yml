@@ -1,4 +1,4 @@
-name: Selenium screenshot with pure JS
+name: Selenium screenshot
 
 on:
   workflow_dispatch:
