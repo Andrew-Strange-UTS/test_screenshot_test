@@ -1,8 +1,7 @@
 name: Selenium screenshot with pure JS
 
 on:
-  push:
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   test:
