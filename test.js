@@ -23,8 +23,9 @@ async function takeScreenshot(driver, imageName) {
   let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
 
   try {
-    await driver.get('https://www.uts.edu.au');
-    await takeScreenshot(driver, 'uts1.png');
+    await driver.get('https://cb2lockersci.uts.edu.au');
+    await driver.wait(until.elementIsVisible(driver.findElement(By.id('loginButton'))),10000);
+    await takeScreenshot(driver, 'lockerslogin.png');
   } finally {
     await driver.quit();
   }
