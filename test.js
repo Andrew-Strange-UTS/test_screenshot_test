@@ -5,11 +5,8 @@ const path = require('path');
 const os = require('os');
 
 async function takeScreenshot(driver, imageName) {
-  // Ensure screenshots directory exists
   fs.mkdirSync('screenshots', { recursive: true });
-  // Take screenshot
   const image = await driver.takeScreenshot();
-  // Write file
   const outfile = path.join('screenshots', imageName);
   fs.writeFileSync(outfile, image, 'base64');
   console.log(`Screenshot saved: ${outfile}`);
