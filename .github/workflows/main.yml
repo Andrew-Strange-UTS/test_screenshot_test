@@ -11,6 +11,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Install Google Chrome
         run: |
           sudo apt-get update
@@ -20,8 +25,6 @@ jobs:
         run: npm install -g selenium-webdriver chromedriver
 
       - name: Run selenium test
-        env:
-          PATH: /usr/bin/google-chrome:$PATH
         run: node test.js
 
       - name: Upload screenshots
