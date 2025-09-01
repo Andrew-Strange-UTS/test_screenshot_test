@@ -24,10 +24,17 @@ async function takeScreenshot(driver, imageName) {
 
   try {
     await driver.get('https://cb2lockersci.uts.edu.au');
-    
-    await driver.sleep(10000);
-    //await driver.wait(until.elementIsVisible(driver.findElement(By.id('loginButton'))),10000);
+    await driver.wait(until.elementIsVisible(driver.findElement(By.id('loginButton'))),10000);
     await takeScreenshot(driver, 'lockerslogin.png');
+  } catch (err) {
+    console.error('Test failed:', err);
+    // Try to take screenshot on failure
+    try {
+      await takeScreenshot(driver, 'error_screen.png');
+    } catch (screenshotErr) {
+      console.error('Failed to take screenshot on error:', screenshotErr);
+    }
+    throw err; // rethrow to signal test failed
   } finally {
     await driver.quit();
   }
